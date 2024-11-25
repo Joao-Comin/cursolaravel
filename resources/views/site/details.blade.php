@@ -16,7 +16,7 @@
 
 
 
-        <form action="{{route('site.addcarrinho')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('site.carrinho')}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$produto->id}}">
             <input type="hidden" name="name" value="{{$produto->nome}}">
