@@ -1,11 +1,18 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Categoria;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Categoria;
+
+
+
 class AppServiceProvider extends ServiceProvider
 {
+
+    protected $polices = [
+        
+    ];
     /**
      * Register any application services.
      */
