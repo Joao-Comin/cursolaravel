@@ -38,12 +38,12 @@ class DashboardController extends Controller
 
         //grafico 2 - categorias
 
-        $catData = Categoria::all();
+        $catData = Categoria::with('produtos')->get();
 
         //preparar o array
         foreach ($catData as $cat) {
             $catNome[] = " ' ".$cat->nome." ' ";
-            $catTotal[] = Produto::where('id_categoria', $cat->id)->count();
+            $catTotal[] = $cat->produtos->count();
         }
 
         //formatar
