@@ -7,9 +7,10 @@ use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Models\Produto;
 
-Route::resource('/produtos', ProdutoController::class);
-Route::resource('/users', UserController::class);
+//Route::resource('/produtos', ProdutoController::class);
+//Route::resource('/users', UserController::class);
 
 //rota do site:
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
@@ -30,6 +31,5 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 Route::get('/register', [LoginController::class, 'create'])->name('login.create');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'checkEmail']);
-Route::get('/admin/produtos',function(){
-    return view('admin/produtos');
-})->name('admin.produtos');
+Route::get('/admin/produtos',[ProdutoController::class, 'index'])->name('admin.produtos');
+Route::delete('/admin/produto/delete/{id}',[ProdutoController::class, 'destroy'])->name('admin.delete');

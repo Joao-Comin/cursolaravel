@@ -14,8 +14,8 @@ class ProdutoController extends Controller
     public function index()
     {
             //return "index";
-        $produtos =  Produto::paginate(3);
-            return view('site.home',compact('produtos'));
+        $produtos = Produto::paginate(5);
+        return view('admin.produtos', compact('produtos'));
     }
 
     /**
@@ -62,8 +62,10 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $produto = Produto::find($id);
+        $produto->delete();
+        return redirect()->route('admin.produtos')->with('sucesso', 'Produto Removido com sucesso');
     }
 }
